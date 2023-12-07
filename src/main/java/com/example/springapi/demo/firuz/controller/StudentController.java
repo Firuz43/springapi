@@ -3,10 +3,7 @@ package com.example.springapi.demo.firuz.controller;
 import com.example.springapi.demo.firuz.entity.Student;
 import com.example.springapi.demo.firuz.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,22 @@ public class StudentController {
     @GetMapping("/students")
     public List<Student> fetchStudents() {
         return studentService.fetchStudents();
+    }
+
+    @GetMapping("/students/{id}")
+    public Student getStudent(@PathVariable("id") Long studentId) {
+        return studentService.getStudent(studentId);
+    }
+
+    @DeleteMapping("/students/{id}")
+    public String deleteStudent(@PathVariable("id") Long studentId) {
+        studentService.deleteStudent(studentId);
+        return "Deleted successfully";
+    }
+
+    @PutMapping("/students/{id}")
+    public Student updateStudent(@PathVariable("id") Long studentId,
+                                 @RequestBody Student student) {
+        return studentService.updateStudent(studentId, student);
     }
 }
