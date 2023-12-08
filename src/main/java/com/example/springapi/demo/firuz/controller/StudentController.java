@@ -39,4 +39,9 @@ public class StudentController {
                                  @RequestBody Student student) {
         return studentService.updateStudent(studentId, student);
     }
+
+    @GetMapping("/students/name/{name}")
+    public Student getStudentByName(@PathVariable("name") String firstName) {
+        return studentService.getStudentByName(firstName);
+    }
 }

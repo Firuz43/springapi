@@ -50,5 +50,10 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.save(studentDb);
     }
 
+    @Override
+    public Student getStudentByName(String firstName) {
+        return studentRepository.findStudentByFirstNameIgnoreCase(firstName);
+    }
+
 
 }
