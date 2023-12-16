@@ -13,26 +13,34 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    //Saving student to database
     @Override
     public Student saveStudent(Student student) {
         return studentRepository.save(student);
     }
 
+    //Fetching list of students from database
     @Override
     public List<Student> fetchStudents() {
         return studentRepository.findAll();
     }
 
+    //Fetching student by id
     @Override
     public Student getStudent(Long studentId) {
         return studentRepository.findById(studentId).get();
     }
 
+
+    //Deleting student from database
     @Override
     public void deleteStudent(Long studentId) {
         studentRepository.deleteById(studentId);
     }
 
+
+    //Update student to database
     @Override
     public Student updateStudent(Long studentId, Student student) {
         Student studentDb = studentRepository.findById(studentId).get();
